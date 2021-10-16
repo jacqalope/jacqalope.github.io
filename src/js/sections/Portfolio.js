@@ -57,7 +57,7 @@ export default class Portfolio {
     onWindowPopstate (event) {
         if (isPortfolioModalOpen()) {
             event.preventDefault();
-            history.pushState(null, null, '#porfolio');
+            history.pushState(null, null, '#portfolio');
             this.closePortfolioModal();
         }
     }
