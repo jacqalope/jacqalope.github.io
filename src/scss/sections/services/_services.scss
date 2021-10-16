@@ -22,7 +22,7 @@
 .service__icon {
     .material-icons {
         font-size: pxToRem(40px);
-        
+
         @include mq($breakpoint-md){
             font-size: pxToRem(45px);
         }
@@ -30,5 +30,5 @@
 }
 
 .service__p {
-    margin-bottom: 0; 
+    margin-bottom: 0;
 }

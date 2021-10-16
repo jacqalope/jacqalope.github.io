@@ -11,7 +11,7 @@
 
 .section {
     padding-top: pxToRem(60px);
-    
+
     @include mq($breakpoint-md) {
         padding-top: pxToRem(90px);
     }
@@ -26,6 +26,6 @@
 }
 
 .section__header-p {
-    max-width: pxToRem(280px);   
+    max-width: pxToRem(600px);   
     font-size: pxToRem(16px);
 }

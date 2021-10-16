@@ -1,4 +1,4 @@
-.form-contact { 
+.form-contact {
     position: relative;
     padding: pxToRem(15px) pxToRem(20px);
 }
@@ -7,7 +7,7 @@
     display: grid;
     grid-template-columns: 1fr;
     column-gap: $grid-column-gap;
-    
+
     @include mq($breakpoint-md) {
         grid-template-columns: 1fr 1fr;
     }
@@ -16,7 +16,7 @@
 .form-contact__surface {
     position: absolute;
     top: 0;
-    #{$end-direction}: pxToRem(50px);
+    #{$end-direction}: pxToRem(0px);
     bottom: 0;
     #{$start-direction}: 0px;
     @include theme-transition;
@@ -41,7 +41,7 @@
     .form__message--success {
         .material-icons {
             display: block;
-        }        
+        }
     }
 }
 
@@ -85,11 +85,11 @@ textarea.form__field {
     position: relative;
 }
 
-.form__message--error {    
+.form__message--error {
     background-color: $alert;
 }
 
-.form__message--success {    
+.form__message--success {
     background-color: $success;
 }
 
@@ -107,5 +107,5 @@ textarea.form__field {
 .form__live-region-icon {
     position: absolute;
     top: pxToRem(6px);
-    #{$end-direction}: pxToRem(6px);    
+    #{$end-direction}: pxToRem(6px);
 }
