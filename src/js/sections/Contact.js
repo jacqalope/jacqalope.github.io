@@ -142,13 +142,13 @@ export default class Contact {
         setTimeout(() => {
             const fakeData = {
                 status: "success",
-                message: "Sorry, this isn't quite working yet!",
+                message: "Message has been sent :)",
             };
             const formLiveRegionEl = getEl('#form-live-region');
 
             [
                 'form__message--visible',
-                'form__message--visible'
+                'form__message--success'
             ].forEach(className => formLiveRegionEl.classList.add(className));
 
             formLiveRegionEl.innerHTML = "<strong>" + fakeData.message + "</strong>";
