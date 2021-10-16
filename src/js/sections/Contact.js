@@ -142,7 +142,7 @@ export default class Contact {
         setTimeout(() => {
             const fakeData = {
                 status: "success",
-                message: "Message has been sent :)",
+                message: "Sorry, this isn't quite working yet!",
             };
             const formLiveRegionEl = getEl('#form-live-region');
 
