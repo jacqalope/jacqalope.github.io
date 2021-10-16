@@ -148,7 +148,7 @@ export default class Contact {
 
             [
                 'form__message--visible',
-                'form__message--success'
+                'form__message--visible'
             ].forEach(className => formLiveRegionEl.classList.add(className));
 
             formLiveRegionEl.innerHTML = "<strong>" + fakeData.message + "</strong>";
