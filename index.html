@@ -323,10 +323,12 @@
 					<li>Guide text</li>
 					<li>Button text</li>
 					<li>Error messages</li>
+					<li>Confirmation messages</li>
+					<li>Success messages</li>
 					<li>Banner and warning messages</li>
 					<li>Feature and object naming</li>
 					<li>Deprecation messages</li>
-					<li>System messages</li>
+					<li>System Status messages</li>
 					<li>Critical Incident Responses</li>
 					<li>Release notes</li>
 				</ul>
@@ -343,7 +345,8 @@
 								<span class="sr-only">Filter by </span>All</button>
 						</li>
 						<li>
-							<button class="button navigation__link" data-filter=".filter-clientmsg"><span class="sr-only">Filter by Category </span>Client Messages</button>
+							<button class="button navigation__link" data-filter=".filter-clientmsg">
+								<span class="sr-only">Filter by Category </span>Client Messages</button>
 						</li>
 						<li>
 							<button class="button navigation__link" data-filter=".filter-errors">
@@ -773,16 +776,16 @@
 									<h4 class="portfolio-item__subtitle">Skills</h4>
 									<ul class="dash-list portfolio-item__description-list">
 										<li class="dash-list__item dash-list__item--inline">
-											<span class="dash-list__dash" aria-hidden="true">
-											</span> Research</li>
+										<span class="dash-list__dash" aria-hidden="true">
+										</span> Research</li>
 										<li class="dash-list__item dash-list__item--inline">
-											<span class="dash-list__dash" aria-hidden="true"></span> Wireframing</li>
+										<span class="dash-list__dash" aria-hidden="true"></span> Wireframing</li>
 										<li class="dash-list__item dash-list__item--inline">
-											<span class="dash-list__dash" aria-hidden="true"></span> Mockups</li>
+										<span class="dash-list__dash" aria-hidden="true"></span> Mockups</li>
 										<li class="dash-list__item dash-list__item--inline">
-											<span class="dash-list__dash" aria-hidden="true"></span> Ruby</li>
+										<span class="dash-list__dash" aria-hidden="true"></span> Ruby</li>
 										<li class="dash-list__item dash-list__item--inline">
-											<span class="dash-list__dash" aria-hidden="true"></span> React</li>
+										<span class="dash-list__dash" aria-hidden="true"></span> React</li>
 									</ul>
 								</div>
 							</div>
@@ -832,37 +835,40 @@
 									</div>
 									<h4 class="portfolio-item__subtitle">Company</h4>
 									<p class="portfolio-item__description-p">Mavenlink</p>
-									
 									<h4 class="portfolio-item__subtitle">Goal</h4>
 									<p class="portfolio-item__description-p">When I joined Mavenlink,
-									they had just incepted the idea of a flexible new platform for Mavenlink process
-									automations and integrations.</p>
-									<p class="portfolio-item__description-p">Soon after, we held a design sprint with our
-									entire team (product manager, design, engineering), some consultants from our
-									professional services organization, and product marketing. More research, testing, and
-									iteration followed, until we developed a modular, plug-and-play approach that our
-									consultants and business representatives could understand quickly. We continue to evolve
-									this platform.</p>
+									they had just incepted the idea of a new, flexible, no-code/low-code platform for 
+									Mavenlink process automations and integrations. This platform is the 2.0 of the
+									legacy platform, a product that was deemed not scalable enough for our clients.</p>
 									<h4 class="portfolio-item__subtitle">Approach</h4>
-									<p class="portfolio-item__description-p">Mavenlink</p>
+									<p class="portfolio-item__description-p">Competitor analysis was a starting point.
+									We held a design sprint with our entire team (product manager, design, engineering),
+									some consultants from our professional services organization, and product marketing.
+									More research, testing, and iteration has followed</p>
+									<p class="portfolio-item__description-p">Establishing a feedback loop with consultants
+									and clients has been integral to the development of this product, as has instrumentation
+									for quantitative data.</p>
 									<h4 class="portfolio-item__subtitle">Outcome</h4>
-									<p class="portfolio-item__description-p">Mavenlink</p>
+									<p class="portfolio-item__description-p">We've iterated to a modular, plug-and-play
+									product that citizen integrator personas can understand quite quickly.
+									We continue to evolve this platform so that more and more of our users can comfortably
+									automate their processes.</p>
 									<h4 class="portfolio-item__subtitle">Skills</h4>
 									<ul class="dash-list portfolio-item__description-list">
 										<li class="dash-list__item dash-list__item--inline">
-											<span class="dash-list__dash" aria-hidden="true"></span> Design Sprint</li>
+										<span class="dash-list__dash" aria-hidden="true"></span> Design Sprint</li>
 										<li class="dash-list__item dash-list__item--inline">
-											<span class="dash-list__dash" aria-hidden="true"></span> Information Architecture</li>
+										<span class="dash-list__dash" aria-hidden="true"></span> Information Architecture</li>
 										<li class="dash-list__item dash-list__item--inline">
-											<span class="dash-list__dash" aria-hidden="true"></span> Localization</li>
+										<span class="dash-list__dash" aria-hidden="true"></span> Localization</li>
 										<li class="dash-list__item dash-list__item--inline">
-											<span class="dash-list__dash" aria-hidden="true"></span> Copywriting</li>
+										<span class="dash-list__dash" aria-hidden="true"></span> Copywriting</li>
 										<li class="dash-list__item dash-list__item--inline">
-											<span class="dash-list__dash" aria-hidden="true"></span> Optimal Workshop</li>
+										<span class="dash-list__dash" aria-hidden="true"></span> Optimal Workshop</li>
 										<li class="dash-list__item dash-list__item--inline">
-											<span class="dash-list__dash" aria-hidden="true"></span> Maze</li>
+										<span class="dash-list__dash" aria-hidden="true"></span> Maze</li>
 										<li class="dash-list__item dash-list__item--inline">
-											<span class="dash-list__dash" aria-hidden="true"></span> Figma</li>
+										<span class="dash-list__dash" aria-hidden="true"></span> Figma</li>
 									</ul>
 								</div>
 							</div>
@@ -908,24 +914,35 @@
 								<div class="portfolio-item__description">
 									<div class="line line--horizontal line--portfolio">
 									</div>
-									<h4 class="portfolio-item__subtitle">Description</h4>
-									<p class="portfolio-item__description-p">I have written and revised error messages at
-									both the API and UI layers. For audits and revisions, I am comfortable with editing
-									messages directly in repositories.</p>
 									<h4 class="portfolio-item__subtitle">Company</h4>
 									<p class="portfolio-item__description-p">Mavenlink</p>
+									<h4 class="portfolio-item__subtitle">Goal</h4>
+									<p class="portfolio-item__description-p">To not only rewrite unhelpful error messages,
+									but to set up a framework so we can better prevent them in the first place.</p>
+									<h4 class="portfolio-item__subtitle">Approach</h4>
+									<p class="portfolio-item__description-p">Sometimes, there aren't enough writers and 
+									content designers to do all the work, to review every single word. Having a framework
+									and guidance can help to some degree. In the world of UX, this may be part of your
+									product design system. And just like the rest of the design system, it is a living thing
+									that needs to be re-evaluated from time to time.</p>
+									<h4 class="portfolio-item__subtitle">Outcome</h4>
+									<p class="portfolio-item__description-p">Clear patterns and guidelines mean fewer
+									revisions to make (or quicker delivery of features). I have still revised more error
+									messages at both the API and UI layers than I have created new ones, though.</p>
+									<p class="portfolio-item__description-p">For audits and revisions, I enjoy editing
+									messages directly in repositories.</p>
 									<h4 class="portfolio-item__subtitle">Skills</h4>
 									<ul class="dash-list portfolio-item__description-list">
 										<li class="dash-list__item dash-list__item--inline">
-											<span class="dash-list__dash" aria-hidden="true"></span> Research</li>
+										<span class="dash-list__dash" aria-hidden="true"></span> Research</li>
 										<li class="dash-list__item dash-list__item--inline">
-											<span class="dash-list__dash" aria-hidden="true"></span> Usability Testing</li>
+										<span class="dash-list__dash" aria-hidden="true"></span> Usability Testing</li>
 										<li class="dash-list__item dash-list__item--inline">
-											<span class="dash-list__dash" aria-hidden="true"></span> Localization</li>
+										<span class="dash-list__dash" aria-hidden="true"></span> Localization</li>
 										<li class="dash-list__item dash-list__item--inline">
-											<span class="dash-list__dash" aria-hidden="true"></span> Content Audit</li>
+										<span class="dash-list__dash" aria-hidden="true"></span> Content Audit</li>
 										<li class="dash-list__item dash-list__item--inline">
-											span class="dash-list__dash" aria-hidden="true"></span> Git</li>
+										<span class="dash-list__dash" aria-hidden="true"></span> Git</li>
 								<li class="dash-list__item dash-list__item--inline">
 									<span class="dash-list__dash" aria-hidden="true"></span> Elixir</li>
 								<li class="dash-list__item dash-list__item--inline">
@@ -951,7 +968,7 @@
 				<div class="portfolio-item__imgs">
 					<div class="portfolio-item__img-wrapper">
 						<img loading="lazy" class="img-fluid lazyload" src="./assets/VPTTEInAppMsg.png"
-						     data-src="./assets/VPTTEInAppMsg.png" alt="More Workflows Guide Text">
+						     data-src="./assets/VPTTEInAppMsg.png" alt="An in-app message in Mavenlink about enhanced permissions">
 					</div>
 				</div>
 				<div class="container">
@@ -959,15 +976,19 @@
 						<div class="portfolio-item__description">
 							<div class="line line--horizontal line--portfolio">
 							</div>
-							<h4 class="portfolio-item__subtitle">Description</h4>
-							<p class="portfolio-item__description-p">Mavenlink added and enhanced some permissions features. I
-								helped with the client messaging, in addition to API documentation. I coordinated primarily
-								with the product manager and the help documentation writers.</p>
-							<p class="portfolio-item__description-p">I have also assisted with messages on the
-								<a href="https://mavenlink.statuspage.io/" target="_blank">Mavenlink status page</a> about
-								maintenance and critical incidents.</p>
 							<h4 class="portfolio-item__subtitle">Company</h4>
 							<p class="portfolio-item__description-p">Mavenlink</p>
+							<h4 class="portfolio-item__subtitle">Goal</h4>
+							<p class="portfolio-item__description-p">Help create clear and concise, but also warm and encouraging
+							text to support users in exploring new and enhanced permissions features.</p>
+							<h4 class="portfolio-item__subtitle">Approach</h4>
+							<p class="portfolio-item__description-p">I started learning about the feature when I was preparing
+							API documentation for beta clients, so that helped me to get familiar with the feature early on. I then 
+							coordinated with the product manager and help content writers as the feature was being prepared for
+							general release, to ensure alignment on messaging.</p>
+							<h4 class="portfolio-item__subtitle">Outcome</h4>
+							<p class="portfolio-item__description-p">Users have migrated to more modern (RBAC) and less confusing
+							permission systems. There are fewer questions about permissions from clients.</p>
 							<h4 class="portfolio-item__subtitle">Skills</h4>
 							<ul class="dash-list portfolio-item__description-list">
 								<li class="dash-list__item dash-list__item--inline">
@@ -1011,10 +1032,21 @@
 						<div class="portfolio-item__description">
 							<div class="line line--horizontal line--portfolio">
 							</div>
-							<h4 class="portfolio-item__subtitle">Description</h4>
-							<p class="portfolio-item__description-p">I often am involved in client messages about new features and updates. Additionally, I have audited and directly updated many of our notification emails. For critical incidents, I also help to proofread and edit email messages.</p>
-							<h4 class="portfolio-item__subtitle">Client</h4>
-							<p class="portfolio-item__description-p">ACME Company</p>
+							<h4 class="portfolio-item__subtitle">Company</h4>
+							<p class="portfolio-item__description-p">Mavenlink</p>
+							<h4 class="portfolio-item__subtitle">Goal</h4>
+							<p class="portfolio-item__description-p">Help create as consistent, straightforward, clear, and helpful 
+							text as possible for client emails.</p>
+							<h4 class="portfolio-item__subtitle">Approach</h4>
+							<p class="portfolio-item__description-p">Emails are UX copy too. And like other UX copy, sometimes our
+							users would rather not have too much to read, especially if the email is about a potentially
+							disruptive update. If an announcement warrants it, we link to more extensive documentation. However, I
+							have a bias towards summing the topic up and/or including a Call to Action button (whenever possible) in 
+							emails.</p>
+							<h4 class="portfolio-item__subtitle">Outcome</h4>
+							<p class="portfolio-item__description-p">As part of an audit process, I have helped to 
+							directly update and standardize many of notification emails. For critical incidents, I also helped to
+							proofread and edit client emails. Click-through seems to be better for more standardized messages.</p>
 							<h4 class="portfolio-item__subtitle">Skills</h4>
 							<ul class="dash-list portfolio-item__description-list">
 								<li class="dash-list__item dash-list__item--inline">
@@ -1052,16 +1084,17 @@
 				</div>
 				<div class="portfolio-item__imgs">
 					<div class="portfolio-item__img-wrapper">
+						<h4>First Time User Experiences</h4>
+						<p>Sometimes products have a degree of complexity because of how much functionality there is. And to unlock the 
+						potential of your product, sometimes additional words can help.</p>
 						<img loading="lazy" class="img-fluid lazyload" src="./assets/GuideText2.png" data-src="./assets/GuideText2.png" 
 						     alt="User onboarding text for selecting the trigger of a Mavenlink workflow.">
 					</div>
 					<div class="portfolio-item__img-wrapper">
+						<h4>Helping Users Get Started</h4>
+						<p>A little bit of guiding text can go a long way to helping achieve user adoption.</p>
 						<img loading="lazy" class="img-fluid lazyload" src="./assets/untitledworkflow.png"
 						     data-src="./assets/untitledworkflow.png" alt="User onboarding text for giving a Mavenlink workflow a name">
-					</div>
-					<div class="portfolio-item__img-wrapper">
-						<img loading="lazy" class="img-fluid lazyload" src="./assets/portfolio-thumbnail-placeholder.png"
-						     data-src="./assets/portfolio-item-6-3.jpg" alt="More Workflows Guide Text">
 					</div>
 				</div>
 				<div class="container">
@@ -1069,11 +1102,24 @@
 						<div class="portfolio-item__description">
 							<div class="line line--horizontal line--portfolio">
 							</div>
-							<h4 class="portfolio-item__subtitle">Description</h4>
-							<p class="portfolio-item__description-p">We built a new platform for Mavenlink process automations and integrations. It is built on our APIs (automations), and other applications' APIs (integrations). And because APIs are sometimes complex, some things in our platform require a little bit of guidance as well.</p>
-							<p class="portfolio-item__description-p">For the Mavenlink Workflows platform, we opted to use tooltips for the onboarding experience.</p>
 							<h4 class="portfolio-item__subtitle">Company</h4>
 							<p class="portfolio-item__description-p">Mavenlink</p>
+							<h4 class="portfolio-item__subtitle">Goal</h4>
+							<p class="portfolio-item__description-p">We built a new platform for Mavenlink process automations and
+							integrations. It is built on our APIs (automations), and other applications' APIs (integrations). And
+							because APIs are sometimes complex, some things in our platform require a little bit of guidance as
+							well.</p>
+							<h4 class="portfolio-item__subtitle">Approach</h4>
+							<p class="portfolio-item__description-p">For the Mavenlink Workflows platform, we opted to use tooltips
+							for the onboarding experience. This was partly a function of the tool we had (GainsightPX). Because
+							users tend not to read much in a UI, and because this is added text, I usually try to keep sentence
+								structure as simple and brief as possible.</p>
+							<p class="portfolio-item__description-p"> And because we know how overwhelmed users can
+							feel with more complex products sometimes, I've also taken a more conversational approach by
+							asking the user questions sometimes.</p>
+							<h4 class="portfolio-item__subtitle">Outcome</h4>
+							<p class="portfolio-item__description-p">Users seem more confident and are likely to do more in the
+							platform with some tooltip guidance.</p>
 							<h4 class="portfolio-item__subtitle">Skills</h4>
 							<ul class="dash-list portfolio-item__description-list">
 								<li class="dash-list__item dash-list__item--inline">
