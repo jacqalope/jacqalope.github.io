@@ -24,7 +24,7 @@ export default class Contact {
             email: {
                 validate: function (val) {
                     const emailReg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-        
+
                     return emailReg.test(val);
                 },
                 isValid: false,
@@ -134,29 +134,60 @@ export default class Contact {
         return this.contactFormInvalidsFieldsList.length === 0;
     }
 
-    // This function only simulate an AJAX request receiving a fake data as an answer.
-    // You should edit it in order to make the contact form working considering your backend setup.
-    sendContactEmail() {
+    // Replaced fake AJAX with a real POST to /api/contact (Netlify function)
+    async sendContactEmail() {
         this.DOM.contactFormSubmitButton.classList.add('button--spinner');
 
-        setTimeout(() => {
-            const fakeData = {
-                status: "success",
-                message: "Message has been sent :)",
-            };
+        // collect form values
+        const payload = {};
+        this.DOM.contactFormFieldEls.forEach(input => {
+            payload[input.name] = input.value.trim();
+        });
+
+        try {
+            const res = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            });
+
+            const data = await res.json();
             const formLiveRegionEl = getEl('#form-live-region');
 
+            if (!res.ok) {
+                // show error
+                [
+                    'form__message--visible',
+                    'form__message--error'
+                ].forEach(className => formLiveRegionEl.classList.add(className));
+
+                formLiveRegionEl.innerHTML = "<strong>" + (data.error || 'Failed to send message') + "</strong>";
+                appendEl(formLiveRegionEl, `<span class="material-icons form__live-region-icon" aria-hidden="true">error</span>`);
+            } else {
+                // success
+                [
+                    'form__message--visible',
+                    'form__message--success'
+                ].forEach(className => formLiveRegionEl.classList.add(className));
+
+                formLiveRegionEl.innerHTML = "<strong>" + (data.message || 'Message sent') + "</strong>";
+                appendEl(formLiveRegionEl, `<span class="material-icons form__live-region-icon" aria-hidden="true">check_circle</span>`);
+
+                this.DOM.contactFormFieldEls.forEach(field => field.value = '');
+            }
+        } catch (err) {
+            console.error('Contact submit error:', err);
+            const formLiveRegionEl = getEl('#form-live-region');
             [
                 'form__message--visible',
-                'form__message--success'
+                'form__message--error'
             ].forEach(className => formLiveRegionEl.classList.add(className));
-
-            formLiveRegionEl.innerHTML = "<strong>" + fakeData.message + "</strong>";
-            appendEl(formLiveRegionEl, `<span class="material-icons form__live-region-icon" aria-hidden="true">check_circle</span>`);
-
-            this.DOM.contactFormFieldEls.forEach(field => field.value = '');
-
+            formLiveRegionEl.innerHTML = "<strong>Network error. Try again later.</strong>";
+            appendEl(formLiveRegionEl, `<span class="material-icons form__live-region-icon" aria-hidden="true">error</span>`);
+        } finally {
             this.DOM.contactFormSubmitButton.classList.remove('button--spinner');
-        }, 2000);
+        }
     }
 }
