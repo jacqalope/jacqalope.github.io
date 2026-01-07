@@ -6,10 +6,10 @@ if (form) {
 
     const formData = new FormData(form);
     const payload = {
-      name: formData.get('Name') || '',
-      email: formData.get('Email') || '',
-      subject: formData.get('Subject') || 'Website contact',
-      message: formData.get('Message') || '',
+      name: formData.get('name') || '',
+      email: formData.get('email') || '',
+      subject: formData.get('subject') || 'Website contact',
+      message: formData.get('message') || '',
     };
 
     const submitBtn = form.querySelector('button[type="submit"]');
