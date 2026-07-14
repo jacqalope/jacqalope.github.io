@@ -1,0 +1,6 @@
+source "https://rubygems.org"
+
+gem "jekyll", "~> 4.2"
+# If you use plugins listed in _config.yml, add them here, for example:
+# gem "jekyll-feed"
+# gem "jekyll-seo-tag"
