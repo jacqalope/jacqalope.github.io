@@ -1,1 +1,25 @@
+# Site Settings
+title: "Jacqueline's Portfolio"
+description: "A place to consider my experience and check out some of the work I've done."
 theme: jekyll-theme-minimal
+
+# URL Settings (Crucial for GitHub Pages)
+url: "https://jacqalope.github.io"
+baseurl: "" # Leave empty if your site is hosted at the root domain. 
+            # If your repository is a project page (e.g., jacqalope.github.io/my-project),
+            # change this to "/my-project"
+
+# Build Settings
+markdown: kramdown
+permalink: /:categories/:title/
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/
+  - netlify/            # Excludes your serverless function directory from the Jekyll build
+  - package.json
+  - package-lock.json
+  - webpack.common.js
+  - webpack.dev.js
+  - webpack.prod.js
