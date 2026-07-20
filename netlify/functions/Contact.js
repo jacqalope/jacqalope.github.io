@@ -24,7 +24,7 @@ exports.handler = async (event, context) => {
     try {
         await transporter.sendMail({
             from: `"${name}" <${process.env.SMTP_USER}>`,
-            to: "your-email@example.com", // Where you want to receive submissions
+            to: "jacqueline.h.haddenham@gmail.com", // Where you want to receive submissions
             subject: `New Contact Form Submission: ${name}`,
             text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
             html: `<p><strong>Name:</strong> ${name}</p>
