@@ -32,7 +32,17 @@ exports.handler = async (event, context) => {
       };
     }
 
-    const { name, email, message } = JSON.parse(event.body);
+    let name, email, message;
+
+try {
+  ({ name, email, message } = JSON.parse(event.body));
+} catch (parseError) {
+  return {
+    statusCode: 400,
+    headers,
+    body: JSON.stringify({ error: 'Invalid JSON format in request body.' })
+  };
+}
 
     // 3. Server-side Validation
     if (!name || !email || !message) {
