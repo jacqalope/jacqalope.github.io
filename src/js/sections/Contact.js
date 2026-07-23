@@ -145,7 +145,7 @@ export default class Contact {
         });
 
         try {
-            const res = await fetch('/api/contact', {
+            const res = await fetch('/.netlify/functions/Contact', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
