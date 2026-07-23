@@ -58,7 +58,7 @@
     "isotope-layout": "^3.0.6",
     "jarallax": "^1.12.7",
     "material-design-icons": "^3.0.1",
-    "nodemailer": "^7.0.12",
+    "nodemailer": "^7.0.13",
     "normalize.css": "^8.0.1",
     "object-fit-images": "^3.2.4",
     "rxjs": "^6.6.7",
