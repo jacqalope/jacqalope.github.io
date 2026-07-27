@@ -1,3 +1,5 @@
+console.log("Contact.js is successfully loaded!");
+
 import { 
     getEl,
     queryAll,
