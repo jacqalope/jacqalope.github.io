@@ -1,3 +1,4 @@
+import Contact from './sections/Contact';
 import "normalize.css";
 import "./scss/main.ltr.scss";
 import "./scss/themes.scss";
@@ -8,6 +9,13 @@ import imagesLoaded from "imagesloaded";
 
 import SiteState from './js/SiteState';
 import Site from './js/Site';
+
+document.addEventListener('DOMContentLoaded', () => {
+    // ... any other classes you are initializing ...
+    
+    // Initialize the contact form logic
+    const contactForm = new Contact();
+});
 
 imagesLoaded('.preloadimage', function() {    
     const siteState = new SiteState();
