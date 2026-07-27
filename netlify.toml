@@ -2,7 +2,7 @@
   functions = "netlify/functions"
 
 [[redirects]]
-  from = "/api/contact"
-  to = "/.netlify/functions/contact"
+  from = "/api/Contact"
+  to = "/.netlify/functions/Contact"
   status = 200
   methods = ["POST"]
