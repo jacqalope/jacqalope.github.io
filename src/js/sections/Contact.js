@@ -147,7 +147,7 @@ export default class Contact {
         });
 
         try {
-            const res = await fetch('/.netlify/functions/Contact', {
+            const res = await fetch('https://jacqalope.netlify.app/.netlify/functions/Contact', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
