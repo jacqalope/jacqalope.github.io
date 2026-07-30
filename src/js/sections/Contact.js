@@ -45,6 +45,9 @@ export default class Contact {
     }
 
     init() {
+        // If the contact form isn't present on the page, do nothing.
+        if (!this.DOM.contactForm) return;
+
         this.addListeners();        
     }
 
@@ -147,7 +150,7 @@ export default class Contact {
         });
 
         try {
-            const res = await fetch('https://jacqalope.netlify.app', {
+            const res = await fetch('/.netlify/functions/Contact', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

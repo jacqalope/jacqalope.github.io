@@ -13,8 +13,10 @@ import Site from './js/Site';
 document.addEventListener('DOMContentLoaded', () => {
     // ... any other classes you are initializing ...
     
-    // Initialize the contact form logic
-    const contactForm = new Contact();
+    // Initialize the contact form logic only if the form exists on the page
+    if (document.querySelector('#contact-form')) {
+        new Contact();
+    }
 });
 
 imagesLoaded('.preloadimage', function() {    
