@@ -48,6 +48,21 @@ export default class Contact {
         // If the contact form isn't present on the page, do nothing.
         if (!this.DOM.contactForm) return;
 
+        // If a data-formspree-endpoint attribute exists, set the form's action so the browser posts there.
+        try {
+            const endpoint = this.DOM.contactForm.dataset.formspreeEndpoint;
+            if (endpoint && endpoint.indexOf('formspree.io') !== -1) {
+                // Only set action if not already set
+                if (!this.DOM.contactForm.getAttribute('action') || this.DOM.contactForm.getAttribute('action').trim() === '') {
+                    this.DOM.contactForm.setAttribute('action', endpoint);
+                    this.DOM.contactForm.setAttribute('method', 'POST');
+                }
+            }
+        } catch (e) {
+            // ignore if dataset not supported
+        }
+
+        // Add submit listener — we will validate client-side but allow normal form submission when valid.
         this.addListeners();        
     }
 
@@ -56,7 +71,7 @@ export default class Contact {
     }
 
     onSubmitContactForm(event) {
-        event.preventDefault();
+        // Do client-side validation. Only prevent the submit if the form is invalid.
         this.clearAllFormErros();
         this.contactFormInvalidsFieldsList = [];
     
@@ -73,14 +88,18 @@ export default class Contact {
             }
         });
     
-        if (this.isContactFormValid()) {
-            [
-                'form__message--visible',
-                'form__message--error',
-                'form__message--success'
-            ].forEach(className => getEl('#form-live-region').classList.remove(className));
-            this.sendContactEmail();
-        }        
+        if (!this.isContactFormValid()) {
+            // stop submission and focus on live region
+            event.preventDefault();
+            const liveRegion = getEl('#form-live-region');
+            if (liveRegion) {
+                liveRegion.focus && liveRegion.focus();
+            }
+            return;
+        }
+
+        // If the form is valid, allow the browser to submit normally to the form's action (Formspree).
+        // Remove any JS-based spinner or AJAX submission.
     }
 
     clearAllFormErros() {
@@ -139,60 +158,9 @@ export default class Contact {
         return this.contactFormInvalidsFieldsList.length === 0;
     }
 
-    // Replaced fake AJAX with a real POST to /api/contact (Netlify function)
+    // The old AJAX sender is left in the file for reference but is no longer used when the form posts to Formspree.
     async sendContactEmail() {
-        this.DOM.contactFormSubmitButton.classList.add('button--spinner');
-
-        // collect form values
-        const payload = {};
-        this.DOM.contactFormFieldEls.forEach(input => {
-            payload[input.name] = input.value.trim();
-        });
-
-        try {
-            const res = await fetch('https://jacqalope.netlify.app/.netlify/functions/Contact', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(payload)
-            });
-
-            const data = await res.json();
-            const formLiveRegionEl = getEl('#form-live-region');
-
-            if (!res.ok) {
-                // show error
-                [
-                    'form__message--visible',
-                    'form__message--error'
-                ].forEach(className => formLiveRegionEl.classList.add(className));
-
-                formLiveRegionEl.innerHTML = "<strong>" + (data.error || 'Failed to send message') + "</strong>";
-                appendEl(formLiveRegionEl, `<span class="material-icons form__live-region-icon" aria-hidden="true">error</span>`);
-            } else {
-                // success
-                [
-                    'form__message--visible',
-                    'form__message--success'
-                ].forEach(className => formLiveRegionEl.classList.add(className));
-
-                formLiveRegionEl.innerHTML = "<strong>" + (data.message || 'Message sent') + "</strong>";
-                appendEl(formLiveRegionEl, `<span class="material-icons form__live-region-icon" aria-hidden="true">check_circle</span>`);
-
-                this.DOM.contactFormFieldEls.forEach(field => field.value = '');
-            }
-        } catch (err) {
-            console.error('Contact submit error:', err);
-            const formLiveRegionEl = getEl('#form-live-region');
-            [
-                'form__message--visible',
-                'form__message--error'
-            ].forEach(className => formLiveRegionEl.classList.add(className));
-            formLiveRegionEl.innerHTML = "<strong>Network error. Try again later.</strong>";
-            appendEl(formLiveRegionEl, `<span class="material-icons form__live-region-icon" aria-hidden="true">error</span>`);
-        } finally {
-            this.DOM.contactFormSubmitButton.classList.remove('button--spinner');
-        }
+        // no-op: submission now handled by native browser POST to the form action.
+        return;
     }
 }
