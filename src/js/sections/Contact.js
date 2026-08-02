@@ -139,7 +139,8 @@ export default class Contact {
         return this.contactFormInvalidsFieldsList.length === 0;
     }
 
-    // Replaced fake AJAX with a real POST to /api/contact (Netlify function)
+    // Send via Formspree (client-side). The form element should include a data-formspree-endpoint attribute
+    // e.g. <form id="contact-form" data-formspree-endpoint="https://formspree.io/f/yourFormID"> ... </form>
     async sendContactEmail() {
         this.DOM.contactFormSubmitButton.classList.add('button--spinner');
 
@@ -149,42 +150,60 @@ export default class Contact {
             payload[input.name] = input.value.trim();
         });
 
+        // get Formspree endpoint from data attribute
+        const endpoint = this.DOM.contactForm.dataset.formspreeEndpoint;
+
+        const formLiveRegionEl = getEl('#form-live-region');
+
+        if (!endpoint || endpoint.indexOf('formspree.io') === -1) {
+            // helpful error message for missing configuration
+            [
+                'form__message--visible',
+                'form__message--error'
+            ].forEach(className => formLiveRegionEl.classList.add(className));
+
+            formLiveRegionEl.innerHTML = "<strong>Formspree endpoint not configured. Add data-formspree-endpoint to the form.</strong>";
+            appendEl(formLiveRegionEl, `<span class="material-icons form__live-region-icon" aria-hidden="true">error</span>`);
+            this.DOM.contactFormSubmitButton.classList.remove('button--spinner');
+            return;
+        }
+
         try {
-            const res = await fetch('https://jacqalope.netlify.app/.netlify/functions/Contact', {
+            const res = await fetch(endpoint, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
                 },
                 body: JSON.stringify(payload)
             });
 
-            const data = await res.json();
-            const formLiveRegionEl = getEl('#form-live-region');
+            const data = await res.json().catch(() => ({}));
 
             if (!res.ok) {
-                // show error
                 [
                     'form__message--visible',
                     'form__message--error'
                 ].forEach(className => formLiveRegionEl.classList.add(className));
 
-                formLiveRegionEl.innerHTML = "<strong>" + (data.error || 'Failed to send message') + "</strong>";
+                // Formspree returns errors array sometimes
+                const errorMessage = (data && (data.error || (data.errors && data.errors.map(e => e.message).join(', ')))) || 'Failed to send message';
+                formLiveRegionEl.innerHTML = "<strong>" + errorMessage + "</strong>";
                 appendEl(formLiveRegionEl, `<span class="material-icons form__live-region-icon" aria-hidden="true">error</span>`);
             } else {
-                // success
                 [
-                    'form__message--visible',
+                    'form__message--Visible',
                     'form__message--success'
                 ].forEach(className => formLiveRegionEl.classList.add(className));
 
-                formLiveRegionEl.innerHTML = "<strong>" + (data.message || 'Message sent') + "</strong>";
+                formLiveRegionEl.innerHTML = "<strong>" + (data && (data.message || 'Message sent')) + "</strong>";
                 appendEl(formLiveRegionEl, `<span class="material-icons form__live-region-icon" aria-hidden="true">check_circle</span>`);
 
                 this.DOM.contactFormFieldEls.forEach(field => field.value = '');
             }
         } catch (err) {
             console.error('Contact submit error:', err);
-            const formLiveRegionEl = getEl('#form-live-region');
+
             [
                 'form__message--visible',
                 'form__message--error'
